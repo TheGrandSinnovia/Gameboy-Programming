@@ -320,109 +320,177 @@ Memcopy:
 	ret
 
 LookLeft:
+	ld c, 0
+
 	ld hl, STARTOF(OAM) + 2 ; Tile start
-	ld a, 8
-	ld [hli], a
-	ld a, 0
-	ld [hl], a
+	ld b, 8
+	call ChangeSpriteTile
 
 	ld hl, STARTOF(OAM) + 4 + 2 ; Tile start
-	ld a, 9
-	ld [hli], a
-	ld a, 0
-	ld [hl], a
+	ld b, 9
+	call ChangeSpriteTile
 
 	ld hl, STARTOF(OAM) + 8 + 2 ; Tile start
-	ld a, 10
-	ld [hli], a
-	ld a, 0
-	ld [hl], a
+	ld b, 10
+	call ChangeSpriteTile
 
 	ld hl, STARTOF(OAM) + 12 + 2 ; Tile start
-	ld a, 11
-	ld [hli], a
-	ld a, 0
-	ld [hl], a
+	ld b, 11
+	call ChangeSpriteTile
 
 	ret
 
 LookRight:
+	ld c, %00100000 ; Flip
+
 	ld hl, STARTOF(OAM) + 2 ; Tile start
-	ld a, 9
-	ld [hli], a
-	ld a, %00100000 ; Flip
-	ld [hl], a
+	ld b, 9
+	call ChangeSpriteTile
 
 	ld hl, STARTOF(OAM) + 4 + 2 ; Tile start
-	ld a, 8
-	ld [hli], a
-	ld a, %00100000 ; Flip
-	ld [hl], a
+	ld b, 8
+	call ChangeSpriteTile
 
 	ld hl, STARTOF(OAM) + 8 + 2 ; Tile start
-	ld a, 11
-	ld [hli], a
-	ld a, %00100000 ; Flip
-	ld [hl], a
+	ld b, 11
+	call ChangeSpriteTile
 
 	ld hl, STARTOF(OAM) + 12 + 2 ; Tile start
-	ld a, 10
-	ld [hli], a
-	ld a, %00100000 ; Flip
-	ld [hl], a
+	ld b, 10
+	call ChangeSpriteTile
 
 	ret
 
 LookUp:
+	ld c, 0
+
 	ld hl, STARTOF(OAM) + 2 ; Tile start
-	ld a, 4
-	ld [hli], a
-	ld a, 0
-	ld [hl], a
+	ld b, 4
+	call ChangeSpriteTile
 
 	ld hl, STARTOF(OAM) + 4 + 2 ; Tile start
-	ld a, 5
-	ld [hli], a
-	ld a, 0
-	ld [hl], a
+	ld b, 5
+	call ChangeSpriteTile
 
 	ld hl, STARTOF(OAM) + 8 + 2 ; Tile start
-	ld a, 6
-	ld [hli], a
-	ld a, 0
-	ld [hl], a
+	ld b, 6
+	call ChangeSpriteTile
 
 	ld hl, STARTOF(OAM) + 12 + 2 ; Tile start
-	ld a, 7
-	ld [hli], a
-	ld a, 0
-	ld [hl], a
+	ld b, 7
+	call ChangeSpriteTile
 
 	ret
 
 LookDown:
+	ld c, 0
+
 	ld hl, STARTOF(OAM) + 2 ; Tile start
-	ld a, 0
-	ld [hli], a
-	ld a, 0
-	ld [hl], a
+	ld b, 0
+	call ChangeSpriteTile
 
 	ld hl, STARTOF(OAM) + 4 + 2 ; Tile start
-	ld a, 1
-	ld [hli], a
-	ld a, 0
-	ld [hl], a
+	ld b, 1
+	call ChangeSpriteTile
 
 	ld hl, STARTOF(OAM) + 8 + 2 ; Tile start
-	ld a, 2
-	ld [hli], a
-	ld a, 0
-	ld [hl], a
+	ld b, 2
+	call ChangeSpriteTile
 
 	ld hl, STARTOF(OAM) + 12 + 2 ; Tile start
-	ld a, 3
+	ld b, 3
+	call ChangeSpriteTile
+
+	ret
+
+LeftWalk:
+	ld c, 0
+
+	ld hl, STARTOF(OAM) + 2 ; Tile start
+	ld b, 20
+	call ChangeSpriteTile
+
+	ld hl, STARTOF(OAM) + 4 + 2 ; Tile start
+	ld b, 21
+	call ChangeSpriteTile
+
+	ld hl, STARTOF(OAM) + 8 + 2 ; Tile start
+	ld b, 22
+	call ChangeSpriteTile
+
+	ld hl, STARTOF(OAM) + 12 + 2 ; Tile start
+	ld b, 23
+	call ChangeSpriteTile
+
+	ret
+
+RightWalk:
+	ld c, %00100000 ; Flip
+
+	ld hl, STARTOF(OAM) + 2 ; Tile start
+	ld b, 21
+	call ChangeSpriteTile
+
+	ld hl, STARTOF(OAM) + 4 + 2 ; Tile start
+	ld b, 20
+	call ChangeSpriteTile
+
+	ld hl, STARTOF(OAM) + 8 + 2 ; Tile start
+	ld b, 23
+	call ChangeSpriteTile
+
+	ld hl, STARTOF(OAM) + 12 + 2 ; Tile start
+	ld b, 22
+	call ChangeSpriteTile
+
+	ret
+
+DownWalk:
+	ld c, %00100000 ; Flip
+
+	ld hl, STARTOF(OAM) + 2 ; Tile start
+	ld b, 13
+	call ChangeSpriteTile
+
+	ld hl, STARTOF(OAM) + 4 + 2 ; Tile start
+	ld b, 12
+	call ChangeSpriteTile
+
+	ld hl, STARTOF(OAM) + 8 + 2 ; Tile start
+	ld b, 15
+	call ChangeSpriteTile
+
+	ld hl, STARTOF(OAM) + 12 + 2 ; Tile start
+	ld b, 14
+	call ChangeSpriteTile
+
+	ret
+
+UpWalk:
+	ld c, %00100000 ; Flip
+
+	ld hl, STARTOF(OAM) + 2 ; Tile start
+	ld b, 17
+	call ChangeSpriteTile
+
+	ld hl, STARTOF(OAM) + 4 + 2 ; Tile start
+	ld b, 16
+	call ChangeSpriteTile
+
+	ld hl, STARTOF(OAM) + 8 + 2 ; Tile start
+	ld b, 19
+	call ChangeSpriteTile
+
+	ld hl, STARTOF(OAM) + 12 + 2 ; Tile start
+	ld b, 18
+	call ChangeSpriteTile
+
+	ret
+
+ChangeSpriteTile:
+	ld a, b
 	ld [hli], a
-	ld a, 0
+	ld a, c
 	ld [hl], a
 
 	ret
