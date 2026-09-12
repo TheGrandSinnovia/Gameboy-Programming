@@ -446,43 +446,43 @@ RightWalk:
 	ret
 
 DownWalk:
-	ld c, %00100000 ; Flip
+	ld c, 0
 
 	ld hl, STARTOF(OAM) + 2 ; Tile start
-	ld b, 13
-	call ChangeSpriteTile
-
-	ld hl, STARTOF(OAM) + 4 + 2 ; Tile start
 	ld b, 12
 	call ChangeSpriteTile
 
+	ld hl, STARTOF(OAM) + 4 + 2 ; Tile start
+	ld b, 13
+	call ChangeSpriteTile
+
 	ld hl, STARTOF(OAM) + 8 + 2 ; Tile start
-	ld b, 15
+	ld b, 14
 	call ChangeSpriteTile
 
 	ld hl, STARTOF(OAM) + 12 + 2 ; Tile start
-	ld b, 14
+	ld b, 15
 	call ChangeSpriteTile
 
 	ret
 
 UpWalk:
-	ld c, %00100000 ; Flip
+	ld c, 0
 
 	ld hl, STARTOF(OAM) + 2 ; Tile start
-	ld b, 17
-	call ChangeSpriteTile
-
-	ld hl, STARTOF(OAM) + 4 + 2 ; Tile start
 	ld b, 16
 	call ChangeSpriteTile
 
+	ld hl, STARTOF(OAM) + 4 + 2 ; Tile start
+	ld b, 17
+	call ChangeSpriteTile
+
 	ld hl, STARTOF(OAM) + 8 + 2 ; Tile start
-	ld b, 19
+	ld b, 18
 	call ChangeSpriteTile
 
 	ld hl, STARTOF(OAM) + 12 + 2 ; Tile start
-	ld b, 18
+	ld b, 19
 	call ChangeSpriteTile
 
 	ret
